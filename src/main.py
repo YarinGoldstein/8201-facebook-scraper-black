@@ -1,12 +1,9 @@
 from datetime import datetime
-import base64
-import requests
 import facebook_scraper as scraper
 
 from profileData import target_profiles
+from imageService import get_image_from_post_group
 
-target_profile = [{'id': "123456789", 'name': "shirly.dwek"}, {
-    'id': "123456799", 'name': "shirly.dwek"}]
 date_format_string = "%Y-%m-%dT%H:%M:%S"
 
 target_post_groups = [[cur_post for cur_post in scraper.get_posts(cur_profile['person_id'],
@@ -16,7 +13,9 @@ target_post_groups = [[cur_post for cur_post in scraper.get_posts(cur_profile['p
                       for cur_profile
                       in target_profiles]
 
-formatted_post_groups = [cur_post_group[0]['post_text']
+formatted_post_groups = [{'person_id': cur_post_group[0]['user_id'],
+                          'image': get_image_from_post_group(cur_post_group),
+                          'name': cur_post_group[0]['username']}
                          for cur_post_group
                          in target_post_groups
                          if len(cur_post_group) > 0]
