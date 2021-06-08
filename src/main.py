@@ -1,10 +1,12 @@
 from datetime import datetime
 import facebook_scraper as scraper
+import json
 
 from profileData import target_profiles
 from imageService import get_image_from_post_group
 
 date_format_string = "%Y-%m-%dT%H:%M:%S"
+data_file_name = "data/postData.json"
 
 target_post_groups = [[dict(cur_post, **{'person_id': cur_profile['person_id']})
                        for cur_post
@@ -29,5 +31,9 @@ formatted_post_groups = [{'person_id': cur_post_group[0]['person_id'],
                          for cur_post_group
                          in target_post_groups
                          if len(cur_post_group) > 0]
+
+data_file = open(data_file_name, 'w')
+json.dump(formatted_post_groups, data_file)
+data_file.close()
 
 print("done")
