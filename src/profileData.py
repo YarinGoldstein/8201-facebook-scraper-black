@@ -1,4 +1,3 @@
-cur_credentials = ("danielking1002@walla.com", "1101999d")
 target_profiles = [{'person_id': "100068968507994",
                     'imageUrl': "https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-1/195649319_102533148722302_1510341430419161353_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=7206a8&_nc_ohc=QfEEyhQ0S4kAX-QtXoO&tn=uimB07pEebhS63Nq&_nc_ht=scontent.fhfa2-2.fna&oh=44ee2902136aef6133b922522cd852e2&oe=60E37278",
                     'name': "משה כהן",
