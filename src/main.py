@@ -6,14 +6,16 @@ from imageService import get_image_from_post_group
 
 date_format_string = "%Y-%m-%dT%H:%M:%S"
 
-target_post_groups = [[cur_post for cur_post in scraper.get_posts(cur_profile['person_id'],
-                                                                  credentials=(
-                                                                      cur_profile['email'], cur_profile['password']),
-                                                                  pages=1)]
+target_post_groups = [[dict(cur_post, **{'person_id': cur_profile['person_id']})
+                       for cur_post
+                       in scraper.get_posts(cur_profile['user_id'],
+                                            credentials=(
+                                                cur_profile['email'], cur_profile['password']),
+                                            pages=1)]
                       for cur_profile
                       in target_profiles]
 
-formatted_post_groups = [{'person_id': cur_post_group[0]['user_id'],
+formatted_post_groups = [{'person_id': cur_post_group[0]['person_id'],
                           'image': get_image_from_post_group(cur_post_group),
                           'name': cur_post_group[0]['username']}
                          for cur_post_group
