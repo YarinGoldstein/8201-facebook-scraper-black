@@ -42,4 +42,4 @@ print("Info: Data saved at filepath '~/{}', creating a post request...".format(d
 
 response = requests.post(request_ip, json=json.dumps(formatted_post_groups))
 print("Info: Data sent successfully to url: '{}'. Response is {}"
-      .format, request_ip, response)
+      .format(request_ip, response))
